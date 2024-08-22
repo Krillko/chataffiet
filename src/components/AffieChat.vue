@@ -59,10 +59,12 @@
       -->
 
       <label class="form-control w-full max-w-xs">
-        <div class="label">
+        <div class="label" v-if="!chat.length">
           <span class="label-text">Skriv till Affie</span>
         </div>
-        <div class="flex"><input type="text" placeholder="Här alltså" class="input input-bordered w-full max-w-xs"
+        <div class="flex"><input type="text" 
+                                 :placeholder="chat.length === 0 ? 'Här alltså':'Affie lyssnar'"
+                                 class="input input-bordered w-full max-w-xs"
                                  v-model="input" @keydown.enter="submitChat"/>
           <button class="btn btn-primary" @click="submitChat">&gt;</button>
         </div>
