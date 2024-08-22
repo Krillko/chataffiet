@@ -2,7 +2,7 @@
   <div>
     <div ><img src="/headerimg.jpg" class="max-h-[300px]"></div>
     <div class="text-4xl">Välkommen till <span class="font-bold">ChatAffieT</span></div>
-    <div class="w-1/2">
+    <div class="w-[480px] max-w-full">
       <div v-for="(msg, index) in chat" :key="index">
         <div class="chat"
              :class="{
