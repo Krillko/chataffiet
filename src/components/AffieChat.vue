@@ -7,15 +7,15 @@
         'chat-end': msg.part === 'affie',
       }">
         <div class="chat-image avatar">
-          <div class="w-10 rounded-full">
+          <div class="w-24 rounded-full">
             <img
               v-if="msg.part === 'user'"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src="/icons/user.jpg"
             >
             <img v-else :src="msg.img">
           </div>
         </div>
-        <div class="chat-header">
+        <div class="chat-header text-xs">
           <span v-if="msg.part === 'user'">Du:</span>
           <span v-if="msg.part === 'affie'">Affie:</span>
         </div>
@@ -82,6 +82,12 @@ const chat = ref<Chat[]>([])
 const randn = () => {
   return Math.floor(Math.random() * 5) + 1;
 }
+const endSentence = () => {
+  const rand = Math.random();
+  if (rand < 0.25) return "";   // 50% chance
+  else if (rand < 0.75) return "?";  // 25% chance
+  else return "!";   // 25% chance
+}
 
 const submitChat = () => {
   chat.value.push({
@@ -103,9 +109,9 @@ const submitChat = () => {
       const index = chat.value.length - 1;
       chat.value[index] = {
         ...chat.value[index],
-        message: 'update'
+        message: "Mjau ".repeat(Math.floor(Math.random() * 5) + 1) + endSentence()
       }
-    }, 3000)
+    }, 1500)
 
 
   }, 250)
